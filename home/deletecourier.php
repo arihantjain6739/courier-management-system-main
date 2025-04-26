@@ -1,4 +1,3 @@
-<!-- user will delete there courier themself when click delete link in track section-->
 <?php
     include('../dbconnection.php');
     $billno= $_REQUEST['bb'];
