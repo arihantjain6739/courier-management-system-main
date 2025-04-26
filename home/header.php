@@ -167,7 +167,7 @@
 <div class="bs-example">
     <nav class="navbar navbar-expand-md">
         <a href="home.php" class="navbar-brand">
-            <img src="../images/fcmw.png" alt="Typhoon Logistics">
+            <!-- <img src="../images/fcmw.png" alt="Typhoon Logistics"> -->
             <span class="d-none d-md-inline">TYPHOON</span>
         </a>
         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
