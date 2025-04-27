@@ -22,6 +22,7 @@ include('header.php');
         :root {
             --neon-pink: #ff2cdf;
             --neon-blue: #00f9ff;
+            --neon-green: #0aff0a;
             --dark-bg: #000000;
             --darker-bg: #050505;
             --card-bg: #0a0a0a;
@@ -217,6 +218,109 @@ include('header.php');
             font-size: 1.2rem;
         }
         
+        .qr-container {
+            margin-top: 30px;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .qr-container h3 {
+            color: var(--text-color);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.3rem;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            text-shadow: 0 0 5px rgba(0, 249, 255, 0.5);
+        }
+        
+        .qr-code {
+            position: relative;
+            width: 220px;
+            height: 220px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 249, 255, 0.5);
+            transition: all 0.3s ease;
+            animation: qrPulse 3s infinite alternate;
+        }
+        
+        @keyframes qrPulse {
+            0% {
+                box-shadow: 0 0 15px rgba(0, 249, 255, 0.3);
+                transform: scale(1);
+            }
+            100% {
+                box-shadow: 0 0 25px rgba(0, 249, 255, 0.7);
+                transform: scale(1.02);
+            }
+        }
+        
+        .qr-code img {
+            width: 200px;
+            height: 200px;
+            border-radius: 5px;
+        }
+        
+        .qr-code::before {
+            content: "";
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            background: linear-gradient(45deg, var(--neon-blue), var(--neon-pink), var(--neon-green), var(--neon-blue));
+            z-index: -1;
+            border-radius: 15px;
+            background-size: 400%;
+            animation: glowing 20s linear infinite;
+        }
+        
+        @keyframes glowing {
+            0% { background-position: 0 0; }
+            50% { background-position: 400% 0; }
+            100% { background-position: 0 0; }
+        }
+        
+        .scan-line {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background-color: rgba(0, 249, 255, 0.8);
+            box-shadow: 0 0 10px 5px rgba(0, 249, 255, 0.5);
+            z-index: 100;
+            animation: scanMove 2.5s linear infinite;
+        }
+        
+        @keyframes scanMove {
+            0% { top: 10%; opacity: 0.9; }
+            50% { opacity: 0.5; }
+            100% { top: 90%; opacity: 0.9; }
+        }
+        
+        .qr-text {
+            margin-top: 15px;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.1rem;
+            color: var(--neon-blue);
+            letter-spacing: 1px;
+            text-shadow: 0 0 5px rgba(0, 249, 255, 0.5);
+        }
+        
+        .qr-note {
+            margin-top: 10px;
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        
         @media (max-width: 768px) {
             .container {
                 width: 95%;
@@ -231,6 +335,20 @@ include('header.php');
             .payment-info li {
                 width: 100%;
                 max-width: 300px;
+            }
+            
+            .qr-container {
+                padding: 15px;
+            }
+            
+            .qr-code {
+                width: 180px;
+                height: 180px;
+            }
+            
+            .qr-code img {
+                width: 160px;
+                height: 160px;
             }
         }
     </style>
@@ -273,11 +391,21 @@ include('header.php');
         <div class="payment-info">
             <h3>TRANSACTION METHODS</h3>
             <ol>
-                <li><i class="fas fa-university"></i> UPI: abcd@sbi.com</li>
-                <li><i class="fab fa-google-pay"></i> GPay: 6362786223</li>
-                <li><i class="fas fa-mobile-alt"></i> PhnPay: 3565656555</li>
+                <li><i class="fas fa-university"></i> UPI: typhoonsystems@sbi.com</li>
+                <li><i class="fab fa-google-pay"></i> GPay: +91 6362786223</li>
+                <li><i class="fas fa-mobile-alt"></i> PhnPay: +91 6362786223</li>
             </ol>
         </div>
+        
+        <div class="qr-container">
+    <h3><i class="fab fa-google-pay"></i> SCAN QR CODE TO PAY</h3>
+    <div class="qr-code">
+        <div class="scan-line"></div>
+        <img src="https://res.cloudinary.com/dxpn0ctfa/image/upload/v1745774830/WhatsApp_Image_2025-04-27_at_10.56.32_PM_kqsifs.jpg" alt="GPay QR Code">
+    </div>
+    <div class="qr-text">Typhoon Logistics Payment</div>
+    <div class="qr-note">Scan the QR code using Google Pay or any UPI app</div>
+</div>
     </div>
 </body>
 </html>
